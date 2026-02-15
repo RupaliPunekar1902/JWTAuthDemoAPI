@@ -138,3 +138,4 @@ C:\Users\Dharesh\OneDrive\Desktop\Angular Project\JWTAuthDemoAPI\JWTAuthDemoAPI\
 C:\Users\Dharesh\OneDrive\Desktop\Angular Project\JWTAuthDemoAPI\JWTAuthDemoAPI\obj\Debug\net8.0\JWTAuthDemoAPI.pdb
 C:\Users\Dharesh\OneDrive\Desktop\Angular Project\JWTAuthDemoAPI\JWTAuthDemoAPI\obj\Debug\net8.0\JWTAuthDemoAPI.genruntimeconfig.cache
 C:\Users\Dharesh\OneDrive\Desktop\Angular Project\JWTAuthDemoAPI\JWTAuthDemoAPI\obj\Debug\net8.0\ref\JWTAuthDemoAPI.dll
+C:\Users\Dharesh\OneDrive\Desktop\Angular Project\JWTAuthDemoAPI\JWTAuthDemoAPI\obj\Debug\net8.0\JWTAuthDemoAPI.sourcelink.json

@@ -1,11 +1,14 @@
-﻿using JWTAuthDemoAPI.Data;
+using JWTAuthDemoAPI.Data;
+using JWTAuthDemoAPI.DTO;
 using JWTAuthDemoAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+
 
 namespace JWTAuthDemoAPI.Controllers
 {
@@ -22,31 +25,48 @@ namespace JWTAuthDemoAPI.Controllers
             _config = config;
         }
 
-        [HttpPost("signup")]
-        public IActionResult Signup(User user)
-        {
-            _context.Users.Add(user);
-            _context.SaveChanges();
-            return Ok("User Registered");
-        }
+    //[AllowAnonymous]
+    //[HttpPost("signup")]
+    //    public IActionResult Signup(User user)
+    //    {
+    //        _context.Users.Add(user);
+    //        _context.SaveChanges();
+    //        return Ok("User Registered");
+    //    }
 
-        [HttpPost("login")]
-        public IActionResult Login(User login)
-        {
-            var user = _context.Users
-                .FirstOrDefault(x =>
-                    x.Email == login.Email &&
-                    x.Password == login.Password);
+    [HttpPost("signup")]
+    public IActionResult Signup(User user)
+    {
+      _context.Users.Add(user);
+      _context.SaveChanges();
 
-            if (user == null)
-                return Unauthorized("Invalid Credentials");
+      return Ok(new
+      {
+        success = true,
+        message = "User Registered Successfully"
+      });
+    }
 
-            var token = GenerateToken(user);
 
-            return Ok(new { token });
-        }
 
-        private object GenerateToken(User objUser)
+    [AllowAnonymous]
+    [HttpPost("login")]
+    public IActionResult Login(loginDTO login)
+    {
+      var user = _context.Users.FirstOrDefault(x =>
+          x.Email == login.Email &&
+          x.Password == login.Password);
+
+      if (user == null)
+        return Unauthorized("Invalid Credentials");
+
+      var token = GenerateToken(user);
+
+      return Ok(new { token });
+    }
+
+
+    private object GenerateToken(User objUser)
         {
             var claims = new[]
             {

@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "login",
-        "Type": "JWTAuthDemoAPI.Models.User",
+        "Type": "JWTAuthDemoAPI.DTO.loginDTO",
         "IsRequired": true
       }
     ],
